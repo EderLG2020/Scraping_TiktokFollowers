@@ -39,11 +39,7 @@ app.get('/followers/:username', async (req, res) => {
         const fileName = `${username}-${dateStr}.json`;
         const filePath = path.join(dataFolder, fileName);
 
-        fs.writeFileSync(filePath, JSON.stringify({
-            username,
-            total: followers.length,
-            followers
-        }, null, 2));
+        fs.writeFileSync(filePath, JSON.stringify(followers, null, 2));
 
         console.log(`✅ Archivo guardado: ${fileName}`);
     } catch (err) {
